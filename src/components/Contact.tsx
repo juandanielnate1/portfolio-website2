@@ -26,27 +26,45 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    // Simulate real database or webhook post delay
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('https://formspree.io/f/xeebzney', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert('Something went wrong. Please try again or email jd.nate1@gmail.com directly.');
+      }
+    } catch {
+      alert('Network error. Please try again or email jd.nate1@gmail.com directly.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
-    }, 1200);
+    }
   };
 
   return (
     <section id="contact" className="py-24 bg-white dark:bg-dark-bg border-t border-zinc-200/50 dark:border-dark-border relative overflow-hidden transition-colors duration-300">
-      {/* Decorative vector overlays */}
       <div className="absolute top-1/4 right-0 w-80 h-80 bg-zinc-50 dark:bg-dark-card/20 rounded-full blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="font-mono text-xs font-bold tracking-widest text-brand-accent dark:text-brand-accent-dark uppercase flex items-center justify-center gap-1.5">
             <Send className="w-4 h-4" /> Let's Connect
@@ -57,10 +75,8 @@ export default function Contact() {
           <div className="mt-4 w-12 h-1 bg-brand-accent dark:bg-brand-accent-dark mx-auto rounded-full" />
         </div>
 
-        {/* Form Layout Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Direct Credentials & Bio Callouts */}
           <div className="lg:col-span-5 space-y-8">
             <div className="prose prose-zinc max-w-none text-zinc-600 dark:text-zinc-300 font-sans font-light leading-relaxed">
               <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-white mb-4">
@@ -71,10 +87,8 @@ export default function Contact() {
               </p>
             </div>
 
-            {/* Direct Contact Cards */}
             <div className="space-y-4">
               
-              {/* Email */}
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
                 className="flex items-center space-x-4 p-4 rounded-xl bg-zinc-50 dark:bg-dark-card hover:bg-zinc-100 dark:hover:bg-dark-border border border-zinc-200/80 dark:border-dark-border hover:border-brand-accent dark:hover:border-brand-accent-dark transition-all group hover:scale-[1.02] duration-300"
@@ -88,7 +102,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Phone */}
               <a
                 href={`tel:${PERSONAL_INFO.phone}`}
                 className="flex items-center space-x-4 p-4 rounded-xl bg-zinc-50 dark:bg-dark-card hover:bg-zinc-100 dark:hover:bg-dark-border border border-zinc-200/80 dark:border-dark-border hover:border-brand-accent dark:hover:border-brand-accent-dark transition-all group hover:scale-[1.02] duration-300"
@@ -102,7 +115,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Location */}
               <div className="flex items-center space-x-4 p-4 rounded-xl bg-zinc-50 dark:bg-dark-card border border-zinc-200/80 dark:border-dark-border">
                 <div className="p-3 rounded bg-zinc-900 dark:bg-dark-bg text-white">
                   <MapPin className="w-5 h-5" />
@@ -113,7 +125,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* LinkedIn */}
               <a
                 href={PERSONAL_INFO.linkedin}
                 target="_blank"
@@ -132,7 +143,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Working Contact Form */}
           <div className="lg:col-span-7 bg-zinc-50 dark:bg-dark-card rounded-2xl border border-zinc-200 dark:border-dark-border p-6 sm:p-8 shadow-sm relative overflow-hidden transition-colors duration-300">
             <AnimatePresence mode="wait">
               {!submitSuccess ? (
@@ -148,7 +158,6 @@ export default function Contact() {
                     Send a Message
                   </h3>
 
-                  {/* Name field */}
                   <div>
                     <label htmlFor="name" className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
                       Your Name
@@ -170,7 +179,6 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {/* Email field */}
                   <div>
                     <label htmlFor="email" className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
                       Work Email
@@ -192,7 +200,6 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {/* Message field */}
                   <div>
                     <label htmlFor="message" className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-1.5">
                       Project Details / Manual Steps To Automate
@@ -214,7 +221,6 @@ export default function Contact() {
                     )}
                   </div>
 
-                  {/* Submit button */}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -223,7 +229,7 @@ export default function Contact() {
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                        Analyzing Requirements...
+                        Sending...
                       </span>
                     ) : (
                       <span className="flex items-center gap-1.5">
