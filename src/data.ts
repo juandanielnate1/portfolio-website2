@@ -11,7 +11,8 @@ export const PERSONAL_INFO = {
   phone: '+63 929 522 4049',
   location: 'San Pedro City, Laguna, Philippines',
   linkedin: 'https://linkedin.com/in/john-daniel-nate-596082321',
-  aboutText: "I don't just connect apps—I architect reliable, autonomous systems that eliminate repetitive, error-prone manual tasks. As an AI Automation Specialist trained across n8n, Make.com, and Zapier, I build production-ready workflows with hands-on expertise in APIs, secure webhooks, and advanced LLM integrations. By utilizing precision-grade prompt engineering, I deliver systems that run quietly and flawlessly in the background. Backed by solid administrative and logistics operations experience, I convert complex SOPs into predictable, self-healing automations that scale your business while keeping execution costs to an absolute minimum."
+  aboutText: "I don't just connect apps—I architect reliable, autonomous systems that eliminate repetitive, error-prone manual tasks. As an AI Automation Specialist trained across n8n, Make.com, and Zapier, I build production-ready workflows with hands-on expertise in APIs, secure webhooks, and advanced LLM integrations. By utilizing precision-grade prompt engineering, I deliver systems that run quietly and flawlessly in the background. Backed by solid administrative and logistics operations experience, I convert complex SOPs into predictable, self-healing automations that scale your business while keeping execution costs to an absolute minimum.",
+  profileImage: '/images/profile/profile.jpg'
 };
 
 export const SKILLS: Skill[] = [
@@ -125,10 +126,12 @@ export const EXPERIENCE: ExperienceItem[] = [
   }
 ];
 
+// Permanent project screenshots live in public/images/projects.
 export const PROJECTS: Project[] = [
   {
     id: 'proj1',
     title: 'Atlas — AI Voice Receptionist',
+    imageUrl: '/images/projects/Atlas -- AI Voice Receptionist.png',
     platform: 'n8n',
     description: 'Full voice-AI booking system (n8n + Vapi + Google Calendar + Airtable) with auto-check and logging.',
     mockupType: 'voice',
@@ -141,6 +144,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj2',
     title: 'Automated Knowledge Base RAG Workflow',
+    imageUrl: '/images/projects/Automated Knowledge Base RAG.png',
     platform: 'n8n',
     description: 'Self-updating RAG system (n8n + Supabase + Gemini) syncing vectors with Google Drive files.',
     mockupType: 'rag',
@@ -153,6 +157,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj3',
     title: 'AI Customer Support Agent — KB & Routing',
+    imageUrl: '/images/projects/AI Customer Support.png',
     platform: 'n8n',
     description: 'Webhook-triggered support agent with persistent memory and smart auto-escalation logic.',
     mockupType: 'support',
@@ -165,6 +170,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj4',
     title: 'ASMR Video Generation & Publishing',
+    imageUrl: '/images/projects/ASMR Video Generation.png',
     platform: 'n8n',
     description: 'End-to-end AI video pipeline (n8n + Google Vertex AI) auto-publishing to Facebook & YouTube.',
     mockupType: 'video',
@@ -177,6 +183,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj5',
     title: 'Asana–Xero Financial Reporting Automation',
+    imageUrl: '/images/projects/Asana-Xero.png',
     platform: 'Make.com',
     description: 'Syncs completed Asana tasks with Xero data and auto-logs reports to Google Sheets.',
     mockupType: 'financial',
@@ -189,6 +196,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj6',
     title: 'Smart Gmail Attachment Processor',
+    imageUrl: '/images/projects/Smart Gmail.png',
     platform: 'Make.com',
     description: 'AI-renames and organizes Gmail attachments into Google Drive folders automatically.',
     mockupType: 'gmail',
@@ -201,6 +209,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj7',
     title: 'AI-Powered Lead Qualification & Outreach',
+    imageUrl: '/images/projects/AI-Powered Lead Qualification & Outreach System.png',
     platform: 'Zapier',
     description: 'Captures, enriches, scores, and routes leads with custom AI-drafted outreach drafts.',
     mockupType: 'lead',
@@ -213,6 +222,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj8',
     title: 'Asana CRM Lead Engagement Automation',
+    imageUrl: '/images/projects/Asana CRM Lead Engagement Automation Workflow.png',
     platform: 'Zapier',
     description: '5-stage CRM pipeline automating follow-ups and personalized emails by deal stage.',
     mockupType: 'crm',
@@ -225,6 +235,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'proj9',
     title: 'AI Content Repurposing & Distribution',
+    imageUrl: '/images/projects/AI Content Repurposing & Distribution Automation.png',
     platform: 'Zapier',
     description: 'Turns one file into transcriptions, blog posts, and multi-platform social posts.',
     mockupType: 'repurpose',
@@ -236,10 +247,12 @@ export const PROJECTS: Project[] = [
   }
 ];
 
+// Permanent certificate images live in public/images/certificates.
 export const CERTIFICATES: Certificate[] = [
   {
     id: 'cert1',
     title: 'n8n Advanced Workflow Automation',
+    imageUrl: '/images/certificates/Certificate of Completion on n8n instance.png',
     issuer: 'n8n Academy',
     date: '2025',
     credentialId: 'N8N-ADV-29841',
@@ -249,6 +262,7 @@ export const CERTIFICATES: Certificate[] = [
   {
     id: 'cert2',
     title: 'Make.com Custom Integration Specialist',
+    imageUrl: '/images/certificates/Certificate of Completion with Make.com.png',
     issuer: 'Make Academy (Level 3)',
     date: '2025',
     credentialId: 'MAKE-L3-99482',
@@ -258,6 +272,7 @@ export const CERTIFICATES: Certificate[] = [
   {
     id: 'cert3',
     title: 'Zapier Automation Expert',
+    imageUrl: '/images/certificates/Certificate of Completion with Zapier.png',
     issuer: 'Zapier University',
     date: '2024',
     credentialId: 'ZAP-EXP-77319',
